@@ -6,13 +6,14 @@ import plotly.express as px
 
 
 class Model: # Defining the model class
-    def __init__(self, X_train, y_train, X_test,y_test, model_architecture, vectorizer, class_labels) -> None:
-        self.X_train = X_train
-        self.y_train = y_train
-        self.X_test = X_test
-        self.y_test = y_test
+    def __init__(self, X, y, model_architecture, vectorizer, class_labels, test_size = 0.2, random_seed = 42) -> None:
+        self.X = X
+        self.y = y
         self.model_instance = model_architecture
         self.vectorizer = vectorizer
+        self.test_size = test_size
+        self.random_seed = random_seed
+
         self.class_labels = class_labels
 
         self.confusion_matrix_kwargs = dict(
@@ -27,6 +28,8 @@ class Model: # Defining the model class
         self.pipeline = Pipeline([ # Defining the pipeline with the parameter passed in the class 
             ("vect", self.vectorizer(preprocessor=self.preprocess)), # Preprocessor
             ("model", self.model_instance)]) # Model
+        
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y,test_size=self.test_size, random_state = self.random_seed)
 
 
     def preprocess(self, text): # The preprocess function reapplied here
