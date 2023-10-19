@@ -26,15 +26,11 @@ class Model: # Defining the model class
         )
 
         self.pipeline = Pipeline([ # Defining the pipeline with the parameter passed in the class 
-            ("vect", self.vectorizer(preprocessor=self.preprocess)), # Preprocessor
+            ("vect", self.vectorizer()), # Preprocessor
             ("model", self.model_instance)]) # Model
         
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y,test_size=self.test_size, random_state = self.random_seed)
 
-
-    def preprocess(self, text): # The preprocess function reapplied here
-        text = preprocess_text(text)
-        return text
     
     def fit(self): # Fit function to the train data
         self.pipeline.fit(self.X_train,self.y_train)
