@@ -5,11 +5,10 @@
 ## Table of Contents
 - [Table of Contents](#-table-of-contents)
 - [Overview](#-overview)
-- [Multilabel Classification](#-spam-classification)
+- [Multilabel Classification](#-multilabel-classification)
 - [Features](#-features)
 - [Repository Structure](#-repository-structure)
-- [Performances](#-peformances)
-- [Project review](#-acknowledgments)
+- [Project review](#-project-review)
 
 ---
 
