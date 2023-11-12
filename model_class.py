@@ -42,6 +42,11 @@ class Model_Baseline:
     def fit(self): # Fit function to the train data
         self.pipeline.fit(self.X_train,self.y_train)
 
+    def score(self):
+        score = self.pipeline.score(self.X_test, self. y_test)
+        return score
+
+
     def predict(self): # Predict function on test data
         return self.pipeline.predict(self.X_test)
     
